@@ -5,6 +5,9 @@
  */
 
 const { SITE_URL: BASE_URL } = require('./constants');
+
+// Percent-encode each path segment so folder names with spaces form valid URLs.
+const encodePath = (p) => p.split('/').map(encodeURIComponent).join('/');
 const SITE_NAME = 'Chromebook Unlocked Games';
 const LOGO_URL = `${BASE_URL}/assets/logo.webp`;
 const OG_IMAGE_URL = `${BASE_URL}/assets/og-image.png`;
@@ -122,7 +125,7 @@ function generateIndexStructuredData(games = []) {
       "item": {
         "@type": "VideoGame",
         "name": game.name,
-        "url": `${BASE_URL}/${game.folder}.html`,
+        "url": `${BASE_URL}/${game.slug}.html`,
         "playMode": "SinglePlayer",
         "gamePlatform": "Web Browser",
         "applicationCategory": "Game",
@@ -163,8 +166,8 @@ function generateGameMetaTags(game, thumbPath) {
   // Describe the game page in plain language.
   const gameDescription = `Play ${gameName} online in your browser. Explore this ${categoryText.toLowerCase()} game on Chromebook or desktop, then browse more free games on Chromebook Unlocked Games.`;
 
-  const gameUrl = `${BASE_URL}/${encodeURIComponent(game.folder)}.html`;
-  const imageUrl = `${BASE_URL}/${thumbPath}`;
+  const gameUrl = `${BASE_URL}/${game.slug}.html`;
+  const imageUrl = `${BASE_URL}/${encodePath(thumbPath)}`;
 
   return `<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -223,8 +226,8 @@ function generateGameMetaTags(game, thumbPath) {
 function generateGameStructuredData(game, thumbPath) {
   const gameName = game.name;
   const categories = game.categories || [];
-  const gameUrl = `${BASE_URL}/${encodeURIComponent(game.folder)}.html`;
-  const imageUrl = `${BASE_URL}/${thumbPath}`;
+  const gameUrl = `${BASE_URL}/${game.slug}.html`;
+  const imageUrl = `${BASE_URL}/${encodePath(thumbPath)}`;
 
   // VideoGame Schema - primary game data
   const gameSchema = {

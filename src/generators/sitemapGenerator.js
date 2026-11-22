@@ -3,6 +3,8 @@ const path = require("path");
 const { getThumbPath } = require("../utils/assetManager");
 const { SITE_URL } = require("../utils/constants");
 
+const xmlEscape = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 /**
  * Generate XML sitemap with image sitemap support for SEO
  * @param {Array} games - Array of game objects
@@ -52,20 +54,22 @@ function generateSitemap(games, outputDir, gamesDir = './games') {
     const thumbInfo = getThumbPath(game, gamesDir);
     const thumbPath = thumbInfo.path;
 
-    const gameUrl = `${baseUrl}/${encodeURIComponent(game.folder)}.html`;
-    const imageUrl = `${baseUrl}/${thumbPath}`;
-    const categories = game.categories ? game.categories.join(', ') : 'Games';
+    const gameUrl = `${baseUrl}/${game.slug}.html`;
+    // Encode each path segment: folder names contain spaces.
+    const imageUrl = `${baseUrl}/${thumbPath.split('/').map(encodeURIComponent).join('/')}`;
+    const categories = xmlEscape(game.categories ? game.categories.join(', ') : 'Games');
+    const name = xmlEscape(game.name);
 
-    sitemap += `  <!-- ${game.name} - Free Unblocked Game -->
+    sitemap += `  <!-- ${name.replace(/--/g, '-')} - Free Unblocked Game -->
   <url>
     <loc>${gameUrl}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>${baseUrl}/assets/logo.png</image:loc>
-      <image:title>${game.name} Unblocked - Play Free Online Game</image:title>
-      <image:caption>Play ${game.name} unblocked for free at school. ${categories} game that works on Chromebook and school computers.</image:caption>
+      <image:loc>${imageUrl}</image:loc>
+      <image:title>${name} Unblocked - Play Free Online Game</image:title>
+      <image:caption>Play ${name} unblocked for free at school. ${categories} game that works on Chromebook and school computers.</image:caption>
     </image:image>
   </url>
 

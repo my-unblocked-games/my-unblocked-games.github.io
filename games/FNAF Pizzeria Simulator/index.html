@@ -5,7 +5,32 @@
 <html lang="en">
 
 <head>
-	<base href="https://cdn.jsdelivr.net/gh/genizy/fnaf@f9b32ba6486504f1f6a2117c3201590fcbb132c5/ps/">
+<script>
+/* Large data parts: rawcdn.githack.com redirects big files in a way browsers reject; fetch them from raw.githubusercontent.com instead. */
+(function () {
+  var re = /^https:\/\/rawcdn\.githack\.com\/(.+\.part\d+(?:\?.*)?)$/;
+  function fix(u) {
+    var s = (typeof u === 'string') ? u : (u && u.url) || '';
+    if (!s) return null;
+    try { s = new URL(s, document.baseURI).href; } catch (e) { return null; }
+    var m = re.exec(s);
+    return m ? 'https://raw.githubusercontent.com/' + m[1] : null;
+  }
+  var f = window.fetch;
+  window.fetch = function (r, o) {
+    var n = fix(r);
+    if (n) r = (typeof r === 'string') ? n : new Request(n, r);
+    return f.call(this, r, o);
+  };
+  var x = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function (m, u) {
+    var n = fix(u);
+    if (n) arguments[1] = n;
+    return x.apply(this, arguments);
+  };
+})();
+</script>
+	<base href="https://rawcdn.githack.com/genizy/fnaf/f9b32ba6486504f1f6a2117c3201590fcbb132c5/ps/">
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />

@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { DEFAULT_THUMBNAILS } = require("./constants");
 const { detectTechnology } = require("./gameTech");
+const { assignSlugs } = require("./slug");
 
 /**
  * Normalize the optional "controls" field: [{ "keys": ["W", "A"], "action": "Move" }].
@@ -130,7 +131,7 @@ function loadGames(dataDir, gamesDir) {
     process.exit(1);
   }
 
-  return games;
+  return assignSlugs(games); // each game gets a unique URL slug, e.g. "geometry-dash-lite"
 }
 
 /**

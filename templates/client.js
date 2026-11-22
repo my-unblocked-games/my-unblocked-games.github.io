@@ -97,7 +97,7 @@ function escapeHtmlAttr(str) {
 
 /**
  * Create a game card element
- * @param {Object} game - Game data object {n: name, f: folder, t: thumb, a: aliases, c: categories}
+ * @param {Object} game - Game data object {n: name, f: folder, s: slug, t: thumb, a: aliases, c: categories}
  * @param {number} idx - Card index
  * @param {boolean} eagerLoad - Whether to eager load the thumbnail
  * @returns {HTMLElement} Card element
@@ -105,7 +105,7 @@ function escapeHtmlAttr(str) {
 function createGameCard(game, idx, eagerLoad = false) {
   const card = document.createElement('a');
   card.className = 'card game-card';
-  card.href = '/' + encodeURIComponent(game.f) + '.html';
+  card.href = '/' + game.s + '.html';
   card.setAttribute('data-index', idx);
   card.setAttribute('data-folder', game.f);
   card.setAttribute('data-name', game.n.toLowerCase());
@@ -397,6 +397,7 @@ function searchGames(query) {
     if (nameMatches || aliasMatches) {
       matchingGames.push({
         folder: game.f,
+        slug: game.s,
         name: game.n,
         thumb: game.t,
         // Score for sorting
@@ -420,10 +421,11 @@ function searchGames(query) {
   } else {
     searchDropdown.innerHTML = topResults.map(game => {
       const escapedFolder = escapeHtmlAttr(game.folder);
+      const escapedSlug = escapeHtmlAttr(game.slug);
       const escapedThumb = escapeHtmlAttr(game.thumb);
       const escapedName = escapeHtmlAttr(game.name);
       const escapedNameText = escapeHtml(game.name);
-      return `<div class="search-result-item" onclick="addToRecentlyPlayed('${escapedFolder}'); window.location.href='/${escapedFolder}.html'">
+      return `<div class="search-result-item" onclick="addToRecentlyPlayed('${escapedFolder}'); window.location.href='/${escapedSlug}.html'">
         <img class="search-result-thumb" src="${escapedThumb}" alt="${escapedName}" loading="lazy" decoding="async" width="60" height="60" onerror="this.src='assets/logo.webp'">
         <div class="search-result-name">${escapedNameText}</div>
       </div>`;

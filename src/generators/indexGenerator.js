@@ -131,6 +131,7 @@ function generateIndexHTML(games, categories, mainStyles, clientJS, gamesDir = '
     return {
       n: game.name,                    // name
       f: game.folder,                  // folder
+      s: game.slug,                    // page URL slug
       t: thumbInfo.path,               // thumbnail path
       a: game.otherNames || [],        // aliases for search
       c: game.categories || [],        // categories for filtering
@@ -155,7 +156,7 @@ function generateIndexHTML(games, categories, mainStyles, clientJS, gamesDir = '
   const structuredData = generateIndexStructuredData(games);
   const gameDirectory = [...games]
     .sort((a, b) => a.name.localeCompare(b.name, 'en'))
-    .map(game => `<a href="/${escapeHtmlAttr(encodeURIComponent(game.folder))}.html">${escapeHtml(game.name)}</a>`)
+    .map(game => `<a href="/${escapeHtmlAttr(game.slug)}.html">${escapeHtml(game.name)}</a>`)
     .join('');
 
   // Full HTML template

@@ -20,6 +20,7 @@ const { generateSitemap } = require("./src/generators/sitemapGenerator");
 // Import generators
 const { generateIndexHTML } = require("./src/generators/indexGenerator");
 const { generateGamePage } = require("./src/generators/gamePageGenerator");
+const { generateNotFoundPage } = require("./src/generators/notFoundGenerator");
 
 // Configuration
 const dataDir = path.join(__dirname, "data");
@@ -65,7 +66,11 @@ let generatedCount = 0;
 
 games.forEach(game => {
   const gameHTML = generateGamePage(game, games, categories, gamePageStyles, gamesDir);
-  const gamePagePath = path.join(outputDir, `${game.folder}.html`);
+  // Remove the pre-slug page ("Geometry Dash Lite.html") first; on
+  // case-insensitive disks this also lets "Slope.html" become "slope.html".
+  const legacyPagePath = path.join(outputDir, `${game.folder}.html`);
+  if (fs.existsSync(legacyPagePath)) fs.unlinkSync(legacyPagePath);
+  const gamePagePath = path.join(outputDir, `${game.slug}.html`);
   fs.writeFileSync(gamePagePath, cleanGeneratedHTML(gameHTML));
   generatedCount++;
 
@@ -80,6 +85,10 @@ console.log(`✅ Generated ${generatedCount} game pages\n`);
 // Step 6: Generate sitemap and robots.txt
 console.log("🗺️  Generating sitemap and robots.txt...");
 generateSitemap(games, outputDir, gamesDir);
+
+// 404 page: forwards old space-named game URLs to their slug pages.
+fs.writeFileSync(path.join(outputDir, "404.html"), cleanGeneratedHTML(generateNotFoundPage(games)));
+console.log("✅ 404.html generated (old game URLs forward to new slugs)");
 
 // Build complete
 console.log("\n✨ Build complete! All files generated successfully.\n");

@@ -26,7 +26,7 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="game">
-  <meta property="og:url" content="https://chromebook-unlocked.github.io/BTD5.html">
+  <meta property="og:url" content="https://chromebook-unlocked.github.io/btd5.html">
   <meta property="og:title" content="BTD5 Unblocked - Play Online Free | Chromebook Unlocked Games">
   <meta property="og:description" content="Play BTD5 online in your browser. Explore this tower defence, strategy game on Chromebook or desktop, then browse more free games on Chromebook Unlocked Games.">
   <meta property="og:image" content="https://chromebook-unlocked.github.io/games/BTD5/thumbnail.webp">
@@ -38,7 +38,7 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="https://chromebook-unlocked.github.io/BTD5.html">
+  <meta name="twitter:url" content="https://chromebook-unlocked.github.io/btd5.html">
   <meta name="twitter:title" content="BTD5 Unblocked - Play Online Free | Chromebook Unlocked Games">
   <meta name="twitter:description" content="Play BTD5 online in your browser. Explore this tower defence, strategy game on Chromebook or desktop, then browse more free games on Chromebook Unlocked Games.">
   <meta name="twitter:image" content="https://chromebook-unlocked.github.io/games/BTD5/thumbnail.webp">
@@ -56,7 +56,7 @@
 
   <!-- Additional SEO -->
   <meta name="theme-color" content="#ff66ff">
-  <link rel="canonical" href="https://chromebook-unlocked.github.io/BTD5.html">
+  <link rel="canonical" href="https://chromebook-unlocked.github.io/btd5.html">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -1557,7 +1557,54 @@ body.game-is-expanded {
   color: var(--primary-color);
 }
 
-  </style>
+  
+/* Game loading indicator + slow-load retry */
+.game-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+  text-align: center;
+  background: var(--bg-darker, #0b0b14);
+  color: var(--text-primary, #fff);
+}
+.game-loading.show { display: flex; }
+.game-loading .spinner {
+  width: 46px;
+  height: 46px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--primary-color, #ff66ff);
+  border-radius: 50%;
+  animation: game-spin 0.8s linear infinite;
+}
+@keyframes game-spin { to { transform: rotate(360deg); } }
+.game-loading .slow-msg {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 340px;
+  font-size: 0.95rem;
+}
+.game-loading.slow .slow-msg { display: flex; }
+.game-loading .retry-btn {
+  padding: 0.6rem 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  background: linear-gradient(135deg, var(--primary-color, #ff66ff), var(--primary-dark, #b030b0));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-loading .spinner { animation-duration: 2.4s; }
+}
+</style>
 </head>
 <body>
   <!-- Header with Logo -->
@@ -1592,6 +1639,14 @@ body.game-is-expanded {
             allowfullscreen
             tabindex="0">
           </iframe>
+          <div class="game-loading" id="gameLoading" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <div>Loading game…</div>
+            <div class="slow-msg">
+              <span>Still loading. The game server is slow right now.</span>
+              <button type="button" class="retry-btn" onclick="reloadGame()">↻ Reload game</button>
+            </div>
+          </div>
         </div>
 
         <!-- Keep fullscreen outside the game so it does not cover touch targets. -->
@@ -1638,212 +1693,212 @@ body.game-is-expanded {
   <section class="recommendations" id="moreGamesSection" aria-label="More Unblocked Games">
     <div class="section-divider"></div>
     <div class="grid">
-      <a href="/Super%20Cold.html" class="game-card" title="Play Super Cold Unblocked Free Online" onclick="trackRecentGame('Super Cold')">
+      <a href="/super-cold.html" class="game-card" title="Play Super Cold Unblocked Free Online" onclick="trackRecentGame('Super Cold')">
       <div class="thumb-container" style="--thumb-url: url('games/Super Cold/thumbnail.webp')">
         <img class="thumb" src="games/Super Cold/thumbnail.webp" alt="Play Super Cold Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Super Cold</div>
-    </a><a href="/FNAF%202.html" class="game-card" title="Play FNAF 2 Unblocked Free Online" onclick="trackRecentGame('FNAF 2')">
+    </a><a href="/fnaf-2.html" class="game-card" title="Play FNAF 2 Unblocked Free Online" onclick="trackRecentGame('FNAF 2')">
       <div class="thumb-container" style="--thumb-url: url('games/FNAF 2/thumbnail.webp')">
         <img class="thumb" src="games/FNAF 2/thumbnail.webp" alt="Play FNAF 2 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">FNAF 2</div>
-    </a><a href="/Winter%20Falling.html" class="game-card" title="Play Winter Falling Unblocked Free Online" onclick="trackRecentGame('Winter Falling')">
+    </a><a href="/winter-falling.html" class="game-card" title="Play Winter Falling Unblocked Free Online" onclick="trackRecentGame('Winter Falling')">
       <div class="thumb-container" style="--thumb-url: url('games/Winter Falling/thumbnail.webp')">
         <img class="thumb" src="games/Winter Falling/thumbnail.webp" alt="Play Winter Falling Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Winter Falling</div>
-    </a><a href="/Block%20the%20Pig.html" class="game-card" title="Play Block the Pig Unblocked Free Online" onclick="trackRecentGame('Block the Pig')">
+    </a><a href="/block-the-pig.html" class="game-card" title="Play Block the Pig Unblocked Free Online" onclick="trackRecentGame('Block the Pig')">
       <div class="thumb-container" style="--thumb-url: url('games/Block the Pig/thumbnail.webp')">
         <img class="thumb" src="games/Block the Pig/thumbnail.webp" alt="Play Block the Pig Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Block the Pig</div>
-    </a><a href="/Five%20Nights%20at%20Epstein%20Island.html" class="game-card" title="Play Five Nights at Epstein Island Unblocked Free Online" onclick="trackRecentGame('Five Nights at Epstein Island')">
+    </a><a href="/five-nights-at-epstein-island.html" class="game-card" title="Play Five Nights at Epstein Island Unblocked Free Online" onclick="trackRecentGame('Five Nights at Epstein Island')">
       <div class="thumb-container" style="--thumb-url: url('games/Five Nights at Epstein Island/thumbnail.webp')">
         <img class="thumb" src="games/Five Nights at Epstein Island/thumbnail.webp" alt="Play Five Nights at Epstein Island Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Five Nights at Epstein Island</div>
-    </a><a href="/The%20Impossible%20Quiz%202.html" class="game-card" title="Play The Impossible Quiz 2 Unblocked Free Online" onclick="trackRecentGame('The Impossible Quiz 2')">
+    </a><a href="/the-impossible-quiz-2.html" class="game-card" title="Play The Impossible Quiz 2 Unblocked Free Online" onclick="trackRecentGame('The Impossible Quiz 2')">
       <div class="thumb-container" style="--thumb-url: url('games/The Impossible Quiz 2/thumbnail.webp')">
         <img class="thumb" src="games/The Impossible Quiz 2/thumbnail.webp" alt="Play The Impossible Quiz 2 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">The Impossible Quiz 2</div>
-    </a><a href="/Elastic%20Face.html" class="game-card" title="Play Elastic Face Unblocked Free Online" onclick="trackRecentGame('Elastic Face')">
+    </a><a href="/elastic-face.html" class="game-card" title="Play Elastic Face Unblocked Free Online" onclick="trackRecentGame('Elastic Face')">
       <div class="thumb-container" style="--thumb-url: url('games/Elastic Face/thumbnail.webp')">
         <img class="thumb" src="games/Elastic Face/thumbnail.webp" alt="Play Elastic Face Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Elastic Face</div>
-    </a><a href="/Burrito%20Bison%20Launcha%20Libre.html" class="game-card" title="Play Burrito Bison Launcha Libre Unblocked Free Online" onclick="trackRecentGame('Burrito Bison Launcha Libre')">
+    </a><a href="/burrito-bison-launcha-libre.html" class="game-card" title="Play Burrito Bison Launcha Libre Unblocked Free Online" onclick="trackRecentGame('Burrito Bison Launcha Libre')">
       <div class="thumb-container" style="--thumb-url: url('games/Burrito Bison Launcha Libre/thumbnail.webp')">
         <img class="thumb" src="games/Burrito Bison Launcha Libre/thumbnail.webp" alt="Play Burrito Bison Launcha Libre Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Burrito Bison Launcha Libre</div>
-    </a><a href="/Bowmasters.html" class="game-card" title="Play Bowmasters Unblocked Free Online" onclick="trackRecentGame('Bowmasters')">
+    </a><a href="/bowmasters.html" class="game-card" title="Play Bowmasters Unblocked Free Online" onclick="trackRecentGame('Bowmasters')">
       <div class="thumb-container" style="--thumb-url: url('games/Bowmasters/thumbnail.webp')">
         <img class="thumb" src="games/Bowmasters/thumbnail.webp" alt="Play Bowmasters Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Bowmasters</div>
-    </a><a href="/Bit%20Planes.html" class="game-card" title="Play Bit Planes Unblocked Free Online" onclick="trackRecentGame('Bit Planes')">
+    </a><a href="/bit-planes.html" class="game-card" title="Play Bit Planes Unblocked Free Online" onclick="trackRecentGame('Bit Planes')">
       <div class="thumb-container" style="--thumb-url: url('games/Bit Planes/thumbnail.webp')">
         <img class="thumb" src="games/Bit Planes/thumbnail.webp" alt="Play Bit Planes Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Bit Planes</div>
-    </a><a href="/Friday%20Night%20Funkin%20Undertale.html" class="game-card" title="Play Friday Night Funkin Undertale Unblocked Free Online" onclick="trackRecentGame('Friday Night Funkin Undertale')">
+    </a><a href="/friday-night-funkin-undertale.html" class="game-card" title="Play Friday Night Funkin Undertale Unblocked Free Online" onclick="trackRecentGame('Friday Night Funkin Undertale')">
       <div class="thumb-container" style="--thumb-url: url('games/Friday Night Funkin Undertale/thumbnail.webp')">
         <img class="thumb" src="games/Friday Night Funkin Undertale/thumbnail.webp" alt="Play Friday Night Funkin Undertale Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Friday Night Funkin Undertale</div>
-    </a><a href="/Swordfight.html" class="game-card" title="Play Swordfight Unblocked Free Online" onclick="trackRecentGame('Swordfight')">
+    </a><a href="/swordfight.html" class="game-card" title="Play Swordfight Unblocked Free Online" onclick="trackRecentGame('Swordfight')">
       <div class="thumb-container" style="--thumb-url: url('games/Swordfight/thumbnail.webp')">
         <img class="thumb" src="games/Swordfight/thumbnail.webp" alt="Play Swordfight Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Swordfight</div>
-    </a><a href="/Blackjack.html" class="game-card" title="Play Blackjack Unblocked Free Online" onclick="trackRecentGame('Blackjack')">
+    </a><a href="/blackjack.html" class="game-card" title="Play Blackjack Unblocked Free Online" onclick="trackRecentGame('Blackjack')">
       <div class="thumb-container" style="--thumb-url: url('games/Blackjack/thumbnail.webp')">
         <img class="thumb" src="games/Blackjack/thumbnail.webp" alt="Play Blackjack Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Blackjack</div>
-    </a><a href="/Drift%20Hunters.html" class="game-card" title="Play Drift Hunters Unblocked Free Online" onclick="trackRecentGame('Drift Hunters')">
+    </a><a href="/drift-hunters.html" class="game-card" title="Play Drift Hunters Unblocked Free Online" onclick="trackRecentGame('Drift Hunters')">
       <div class="thumb-container" style="--thumb-url: url('games/Drift Hunters/thumbnail.webp')">
         <img class="thumb" src="games/Drift Hunters/thumbnail.webp" alt="Play Drift Hunters Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Drift Hunters</div>
-    </a><a href="/Five%20Nights%20at%20Wilsons.html" class="game-card" title="Play Five Nights at Wilsons Unblocked Free Online" onclick="trackRecentGame('Five Nights at Wilsons')">
+    </a><a href="/five-nights-at-winstons.html" class="game-card" title="Play Five Nights at Winston&#039;s Unblocked Free Online" onclick="trackRecentGame('Five Nights at Wilsons')">
       <div class="thumb-container" style="--thumb-url: url('games/Five Nights at Wilsons/thumbnail.webp')">
-        <img class="thumb" src="games/Five Nights at Wilsons/thumbnail.webp" alt="Play Five Nights at Wilsons Unblocked - Free Online Game" loading="lazy" width="300" height="300">
+        <img class="thumb" src="games/Five Nights at Wilsons/thumbnail.webp" alt="Play Five Nights at Winston&#039;s Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
-      <div class="card-title">Five Nights at Wilsons</div>
+      <div class="card-title">Five Nights at Winston&#039;s</div>
     </a><a href="/2048.html" class="game-card" title="Play 2048 Unblocked Free Online" onclick="trackRecentGame('2048')">
       <div class="thumb-container" style="--thumb-url: url('games/2048/thumbnail.webp')">
         <img class="thumb" src="games/2048/thumbnail.webp" alt="Play 2048 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">2048</div>
-    </a><a href="/Obby%20Cart.html" class="game-card" title="Play Obby Cart Unblocked Free Online" onclick="trackRecentGame('Obby Cart')">
+    </a><a href="/obby-cart.html" class="game-card" title="Play Obby Cart Unblocked Free Online" onclick="trackRecentGame('Obby Cart')">
       <div class="thumb-container" style="--thumb-url: url('games/Obby Cart/thumbnail.webp')">
         <img class="thumb" src="games/Obby Cart/thumbnail.webp" alt="Play Obby Cart Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Obby Cart</div>
-    </a><a href="/Helix%20Jump.html" class="game-card" title="Play Helix Jump Unblocked Free Online" onclick="trackRecentGame('Helix Jump')">
+    </a><a href="/helix-jump.html" class="game-card" title="Play Helix Jump Unblocked Free Online" onclick="trackRecentGame('Helix Jump')">
       <div class="thumb-container" style="--thumb-url: url('games/Helix Jump/thumbnail.webp')">
         <img class="thumb" src="games/Helix Jump/thumbnail.webp" alt="Play Helix Jump Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Helix Jump</div>
-    </a><a href="/Bad%20Piggies.html" class="game-card" title="Play Bad Piggies Unblocked Free Online" onclick="trackRecentGame('Bad Piggies')">
+    </a><a href="/bad-piggies.html" class="game-card" title="Play Bad Piggies Unblocked Free Online" onclick="trackRecentGame('Bad Piggies')">
       <div class="thumb-container" style="--thumb-url: url('games/Bad Piggies/thumbnail.webp')">
         <img class="thumb" src="games/Bad Piggies/thumbnail.webp" alt="Play Bad Piggies Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Bad Piggies</div>
-    </a><a href="/Ambulance%20Rush.html" class="game-card" title="Play Ambulance Rush Unblocked Free Online" onclick="trackRecentGame('Ambulance Rush')">
+    </a><a href="/ambulance-rush.html" class="game-card" title="Play Ambulance Rush Unblocked Free Online" onclick="trackRecentGame('Ambulance Rush')">
       <div class="thumb-container" style="--thumb-url: url('games/Ambulance Rush/thumbnail.webp')">
         <img class="thumb" src="games/Ambulance Rush/thumbnail.webp" alt="Play Ambulance Rush Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Ambulance Rush</div>
-    </a><a href="/Crossy%20Road.html" class="game-card" title="Play Crossy Road Unblocked Free Online" onclick="trackRecentGame('Crossy Road')">
+    </a><a href="/crossy-road.html" class="game-card" title="Play Crossy Road Unblocked Free Online" onclick="trackRecentGame('Crossy Road')">
       <div class="thumb-container" style="--thumb-url: url('games/Crossy Road/thumbnail.webp')">
         <img class="thumb" src="games/Crossy Road/thumbnail.webp" alt="Play Crossy Road Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Crossy Road</div>
-    </a><a href="/234%20Player%20Games.html" class="game-card" title="Play 234 Player Games Unblocked Free Online" onclick="trackRecentGame('234 Player Games')">
+    </a><a href="/234-player-games.html" class="game-card" title="Play 234 Player Games Unblocked Free Online" onclick="trackRecentGame('234 Player Games')">
       <div class="thumb-container" style="--thumb-url: url('games/234 Player Games/thumbnail.webp')">
         <img class="thumb" src="games/234 Player Games/thumbnail.webp" alt="Play 234 Player Games Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">234 Player Games</div>
-    </a><a href="/Red%20Ball.html" class="game-card" title="Play Red Ball Unblocked Free Online" onclick="trackRecentGame('Red Ball')">
+    </a><a href="/red-ball.html" class="game-card" title="Play Red Ball Unblocked Free Online" onclick="trackRecentGame('Red Ball')">
       <div class="thumb-container" style="--thumb-url: url('games/Red Ball/thumbnail.webp')">
         <img class="thumb" src="games/Red Ball/thumbnail.webp" alt="Play Red Ball Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Red Ball</div>
-    </a><a href="/Highway%20Racer.html" class="game-card" title="Play Highway Racer Unblocked Free Online" onclick="trackRecentGame('Highway Racer')">
+    </a><a href="/highway-racer.html" class="game-card" title="Play Highway Racer Unblocked Free Online" onclick="trackRecentGame('Highway Racer')">
       <div class="thumb-container" style="--thumb-url: url('games/Highway Racer/thumbnail.webp')">
         <img class="thumb" src="games/Highway Racer/thumbnail.webp" alt="Play Highway Racer Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Highway Racer</div>
-    </a><a href="/Bouncy%20Basketball.html" class="game-card" title="Play Bouncy Basketball Unblocked Free Online" onclick="trackRecentGame('Bouncy Basketball')">
+    </a><a href="/bouncy-basketball.html" class="game-card" title="Play Bouncy Basketball Unblocked Free Online" onclick="trackRecentGame('Bouncy Basketball')">
       <div class="thumb-container" style="--thumb-url: url('games/Bouncy Basketball/thumbnail.webp')">
         <img class="thumb" src="games/Bouncy Basketball/thumbnail.webp" alt="Play Bouncy Basketball Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Bouncy Basketball</div>
-    </a><a href="/Drift%20Boss.html" class="game-card" title="Play Drift Boss Unblocked Free Online" onclick="trackRecentGame('Drift Boss')">
+    </a><a href="/drift-boss.html" class="game-card" title="Play Drift Boss Unblocked Free Online" onclick="trackRecentGame('Drift Boss')">
       <div class="thumb-container" style="--thumb-url: url('games/Drift Boss/thumbnail.webp')">
         <img class="thumb" src="games/Drift Boss/thumbnail.webp" alt="Play Drift Boss Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Drift Boss</div>
-    </a><a href="/Sausage%20Flip.html" class="game-card" title="Play Sausage Flip Unblocked Free Online" onclick="trackRecentGame('Sausage Flip')">
+    </a><a href="/sausage-flip.html" class="game-card" title="Play Sausage Flip Unblocked Free Online" onclick="trackRecentGame('Sausage Flip')">
       <div class="thumb-container" style="--thumb-url: url('games/Sausage Flip/thumbnail.webp')">
         <img class="thumb" src="games/Sausage Flip/thumbnail.webp" alt="Play Sausage Flip Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Sausage Flip</div>
-    </a><a href="/Get%20Yoked.html" class="game-card" title="Play Get Yoked Unblocked Free Online" onclick="trackRecentGame('Get Yoked')">
+    </a><a href="/get-yoked.html" class="game-card" title="Play Get Yoked Unblocked Free Online" onclick="trackRecentGame('Get Yoked')">
       <div class="thumb-container" style="--thumb-url: url('games/Get Yoked/thumbnail.webp')">
         <img class="thumb" src="games/Get Yoked/thumbnail.webp" alt="Play Get Yoked Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Get Yoked</div>
-    </a><a href="/Crank%20It!.html" class="game-card" title="Play Crank It! Unblocked Free Online" onclick="trackRecentGame('Crank It!')">
+    </a><a href="/crank-it.html" class="game-card" title="Play Crank It! Unblocked Free Online" onclick="trackRecentGame('Crank It!')">
       <div class="thumb-container" style="--thumb-url: url('games/Crank It!/thumbnail.webp')">
         <img class="thumb" src="games/Crank It!/thumbnail.webp" alt="Play Crank It! Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Crank It!</div>
-    </a><a href="/Portal%20Flash.html" class="game-card" title="Play Portal Flash Unblocked Free Online" onclick="trackRecentGame('Portal Flash')">
+    </a><a href="/portal-flash.html" class="game-card" title="Play Portal Flash Unblocked Free Online" onclick="trackRecentGame('Portal Flash')">
       <div class="thumb-container" style="--thumb-url: url('games/Portal Flash/thumbnail.webp')">
         <img class="thumb" src="games/Portal Flash/thumbnail.webp" alt="Play Portal Flash Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Portal Flash</div>
-    </a><a href="/Bouncemasters.html" class="game-card" title="Play Bouncemasters Unblocked Free Online" onclick="trackRecentGame('Bouncemasters')">
+    </a><a href="/bouncemasters.html" class="game-card" title="Play Bouncemasters Unblocked Free Online" onclick="trackRecentGame('Bouncemasters')">
       <div class="thumb-container" style="--thumb-url: url('games/Bouncemasters/thumbnail.webp')">
         <img class="thumb" src="games/Bouncemasters/thumbnail.webp" alt="Play Bouncemasters Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Bouncemasters</div>
-    </a><a href="/1on1%20Soccer.html" class="game-card" title="Play 1on1 Soccer Unblocked Free Online" onclick="trackRecentGame('1on1 Soccer')">
+    </a><a href="/1on1-soccer.html" class="game-card" title="Play 1on1 Soccer Unblocked Free Online" onclick="trackRecentGame('1on1 Soccer')">
       <div class="thumb-container" style="--thumb-url: url('games/1on1 Soccer/thumbnail.webp')">
         <img class="thumb" src="games/1on1 Soccer/thumbnail.webp" alt="Play 1on1 Soccer Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">1on1 Soccer</div>
-    </a><a href="/Granny.html" class="game-card" title="Play Granny Unblocked Free Online" onclick="trackRecentGame('Granny')">
+    </a><a href="/granny.html" class="game-card" title="Play Granny Unblocked Free Online" onclick="trackRecentGame('Granny')">
       <div class="thumb-container" style="--thumb-url: url('games/Granny/thumbnail.webp')">
         <img class="thumb" src="games/Granny/thumbnail.webp" alt="Play Granny Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Granny</div>
-    </a><a href="/Ace%20Combat%203.html" class="game-card" title="Play Ace Combat 3 Unblocked Free Online" onclick="trackRecentGame('Ace Combat 3')">
+    </a><a href="/ace-combat-3.html" class="game-card" title="Play Ace Combat 3 Unblocked Free Online" onclick="trackRecentGame('Ace Combat 3')">
       <div class="thumb-container" style="--thumb-url: url('games/Ace Combat 3/thumbnail.webp')">
         <img class="thumb" src="games/Ace Combat 3/thumbnail.webp" alt="Play Ace Combat 3 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Ace Combat 3</div>
-    </a><a href="/Achilles%202.html" class="game-card" title="Play Achilles 2 Unblocked Free Online" onclick="trackRecentGame('Achilles 2')">
+    </a><a href="/achilles-2.html" class="game-card" title="Play Achilles 2 Unblocked Free Online" onclick="trackRecentGame('Achilles 2')">
       <div class="thumb-container" style="--thumb-url: url('games/Achilles 2/thumbnail.webp')">
         <img class="thumb" src="games/Achilles 2/thumbnail.webp" alt="Play Achilles 2 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Achilles 2</div>
-    </a><a href="/Capybara%20Clicker.html" class="game-card" title="Play Capybara Clicker Unblocked Free Online" onclick="trackRecentGame('Capybara Clicker')">
+    </a><a href="/capybara-clicker.html" class="game-card" title="Play Capybara Clicker Unblocked Free Online" onclick="trackRecentGame('Capybara Clicker')">
       <div class="thumb-container" style="--thumb-url: url('games/Capybara Clicker/thumbnail.webp')">
         <img class="thumb" src="games/Capybara Clicker/thumbnail.webp" alt="Play Capybara Clicker Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Capybara Clicker</div>
-    </a><a href="/The%20Binding%20of%20Isaac%20-%20Wrath%20of%20the%20Lamb.html" class="game-card" title="Play The Binding of Isaac - Wrath of the Lamb Unblocked Free Online" onclick="trackRecentGame('The Binding of Isaac - Wrath of the Lamb')">
+    </a><a href="/the-binding-of-isaac-wrath-of-the-lamb.html" class="game-card" title="Play The Binding of Isaac - Wrath of the Lamb Unblocked Free Online" onclick="trackRecentGame('The Binding of Isaac - Wrath of the Lamb')">
       <div class="thumb-container" style="--thumb-url: url('games/The Binding of Isaac - Wrath of the Lamb/thumbnail.webp')">
         <img class="thumb" src="games/The Binding of Isaac - Wrath of the Lamb/thumbnail.webp" alt="Play The Binding of Isaac - Wrath of the Lamb Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">The Binding of Isaac - Wrath of the Lamb</div>
-    </a><a href="/Geometry%20Dash%20Lite.html" class="game-card" title="Play Geometry Dash Lite Unblocked Free Online" onclick="trackRecentGame('Geometry Dash Lite')">
+    </a><a href="/geometry-dash-lite.html" class="game-card" title="Play Geometry Dash Lite Unblocked Free Online" onclick="trackRecentGame('Geometry Dash Lite')">
       <div class="thumb-container" style="--thumb-url: url('games/Geometry Dash Lite/thumbnail.webp')">
         <img class="thumb" src="games/Geometry Dash Lite/thumbnail.webp" alt="Play Geometry Dash Lite Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Geometry Dash Lite</div>
-    </a><a href="/Henry%20Stickmin%20Infiltrating%20The%20Airship.html" class="game-card" title="Play Henry Stickmin Infiltrating The Airship Unblocked Free Online" onclick="trackRecentGame('Henry Stickmin Infiltrating The Airship')">
+    </a><a href="/henry-stickmin-infiltrating-the-airship.html" class="game-card" title="Play Henry Stickmin Infiltrating The Airship Unblocked Free Online" onclick="trackRecentGame('Henry Stickmin Infiltrating The Airship')">
       <div class="thumb-container" style="--thumb-url: url('games/Henry Stickmin Infiltrating The Airship/thumbnail.webp')">
         <img class="thumb" src="games/Henry Stickmin Infiltrating The Airship/thumbnail.webp" alt="Play Henry Stickmin Infiltrating The Airship Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Henry Stickmin Infiltrating The Airship</div>
-    </a><a href="/Cluster%20Rush.html" class="game-card" title="Play Cluster Rush Unblocked Free Online" onclick="trackRecentGame('Cluster Rush')">
+    </a><a href="/cluster-rush.html" class="game-card" title="Play Cluster Rush Unblocked Free Online" onclick="trackRecentGame('Cluster Rush')">
       <div class="thumb-container" style="--thumb-url: url('games/Cluster Rush/thumbnail.webp')">
         <img class="thumb" src="games/Cluster Rush/thumbnail.webp" alt="Play Cluster Rush Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Cluster Rush</div>
-    </a><a href="/Dino%20Run.html" class="game-card" title="Play Dino Run Unblocked Free Online" onclick="trackRecentGame('Dino Run')">
+    </a><a href="/dino-run.html" class="game-card" title="Play Dino Run Unblocked Free Online" onclick="trackRecentGame('Dino Run')">
       <div class="thumb-container" style="--thumb-url: url('games/Dino Run/thumbnail.webp')">
         <img class="thumb" src="games/Dino Run/thumbnail.webp" alt="Play Dino Run Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
       <div class="card-title">Dino Run</div>
-    </a><a href="/Leap%20and%20Avoid%202.html" class="game-card" title="Play Leap and Avoid 2 Unblocked Free Online" onclick="trackRecentGame('Leap and Avoid 2')">
+    </a><a href="/leap-and-avoid-2.html" class="game-card" title="Play Leap and Avoid 2 Unblocked Free Online" onclick="trackRecentGame('Leap and Avoid 2')">
       <div class="thumb-container" style="--thumb-url: url('games/Leap and Avoid 2/thumbnail.webp')">
         <img class="thumb" src="games/Leap and Avoid 2/thumbnail.webp" alt="Play Leap and Avoid 2 Unblocked - Free Online Game" loading="lazy" width="300" height="300">
       </div>
@@ -1918,7 +1973,7 @@ body.game-is-expanded {
     "BTD5 Unrestricted",
     "Play BTD5 Online Free"
   ],
-  "url": "https://chromebook-unlocked.github.io/BTD5.html",
+  "url": "https://chromebook-unlocked.github.io/btd5.html",
   "description": "Play BTD5 unblocked online free! Enjoy this popular tower defence, strategy game unrestricted on your Chromebook or school computer. No downloads required - play online free instantly!",
   "image": "https://chromebook-unlocked.github.io/games/BTD5/thumbnail.webp",
   "thumbnailUrl": "https://chromebook-unlocked.github.io/games/BTD5/thumbnail.webp",
@@ -1979,7 +2034,7 @@ body.game-is-expanded {
       "@type": "ListItem",
       "position": 3,
       "name": "BTD5",
-      "item": "https://chromebook-unlocked.github.io/BTD5.html"
+      "item": "https://chromebook-unlocked.github.io/btd5.html"
     }
   ]
 }
@@ -1990,7 +2045,7 @@ body.game-is-expanded {
   "@type": "WebPage",
   "name": "BTD5 Unblocked - Play Online Free",
   "description": "Play BTD5 unblocked online free at school on your Chromebook - unrestricted games",
-  "url": "https://chromebook-unlocked.github.io/BTD5.html",
+  "url": "https://chromebook-unlocked.github.io/btd5.html",
   "image": "https://chromebook-unlocked.github.io/games/BTD5/thumbnail.webp",
   "inLanguage": "en-US",
   "isPartOf": {
@@ -2005,7 +2060,7 @@ body.game-is-expanded {
   "mainEntity": {
     "@type": "VideoGame",
     "name": "BTD5",
-    "url": "https://chromebook-unlocked.github.io/BTD5.html"
+    "url": "https://chromebook-unlocked.github.io/btd5.html"
   }
 }
   </script>
@@ -2033,6 +2088,7 @@ body.game-is-expanded {
       const frame = document.getElementById('gameFrame');
 
       frame.src = 'games/BTD5/index.html';
+      if (window.beginGameLoading) window.beginGameLoading();
       frame.classList.add('active');
       overlay.classList.add('hidden');
 
@@ -2334,5 +2390,107 @@ body.game-is-expanded {
   <link rel="stylesheet" href="assets/cookie-consent.css">
   <script src="assets/cookie-consent.js"></script>
 
+
+  <script>
+  // Game load helpers: warm up the connection before Play is clicked, show a
+  // spinner while the game loads, and offer a reload if it is slow.
+  (function () {
+    var GAME_URL = 'games/BTD5/index.html';
+    var frame = document.getElementById('gameFrame');
+    var box = document.getElementById('gameLoading');
+    var slowTimer = null;
+    var started = false;
+    var wrapperPromise = null;
+    var didConnect = false;
+    var didScripts = false;
+
+    function addLink(rel, href, as, cors) {
+      var l = document.createElement('link');
+      l.rel = rel;
+      l.href = href;
+      if (as) l.as = as;
+      if (cors) l.crossOrigin = 'anonymous';
+      document.head.appendChild(l);
+    }
+
+    // Fetch the (tiny, same-origin) game wrapper once to see what it will load.
+    function getWrapper() {
+      if (!wrapperPromise) {
+        wrapperPromise = fetch(GAME_URL).then(function (r) {
+          return r.ok ? r.text() : '';
+        }).catch(function () { return ''; });
+      }
+      return wrapperPromise;
+    }
+
+    function warmConnections() {
+      if (didConnect) return;
+      didConnect = true;
+      getWrapper().then(function (html) {
+        var re = /\ssrc\s*=\s*["'](https?:\/\/[^\/"']+)/gi;
+        var m, seen = {}, n = 0;
+        while ((m = re.exec(html)) && n < 4) {
+          var origin = m[1];
+          if (seen[origin] || origin.indexOf(location.host) !== -1) continue;
+          seen[origin] = true;
+          n++;
+          addLink('preconnect', origin);
+          addLink('preconnect', origin, '', true);
+        }
+      });
+    }
+
+    function warmScripts() {
+      if (didScripts) return;
+      didScripts = true;
+      getWrapper().then(function (html) {
+        var re = /<script[^>]+\ssrc\s*=\s*["'](https?:\/\/[^"']+)["']/gi;
+        var m, n = 0;
+        while ((m = re.exec(html)) && n < 8) {
+          n++;
+          addLink('preload', m[1], 'script');
+        }
+      });
+    }
+
+    window.beginGameLoading = function () {
+      started = true;
+      if (!box) return;
+      box.classList.add('show');
+      box.classList.remove('slow');
+      clearTimeout(slowTimer);
+      slowTimer = setTimeout(function () { box.classList.add('slow'); }, 8000);
+    };
+
+    window.reloadGame = function () {
+      window.beginGameLoading();
+      frame.src = GAME_URL + (GAME_URL.indexOf('?') < 0 ? '?' : '&') + 'r=' + Date.now();
+    };
+
+    frame.addEventListener('load', function () {
+      if (!started || !box) return;
+      clearTimeout(slowTimer);
+      box.classList.remove('show');
+      box.classList.remove('slow');
+    });
+
+    // Start the network connection early: idle after page load, and fully on
+    // hover / touch / keyboard focus of the Play button.
+    var btn = document.querySelector('.play-btn');
+    if (btn) {
+      ['pointerenter', 'touchstart', 'focus'].forEach(function (ev) {
+        btn.addEventListener(ev, function () { warmConnections(); warmScripts(); }, { passive: true, once: true });
+      });
+    }
+    var idle = window.requestIdleCallback || function (f) { setTimeout(f, 1500); };
+    window.addEventListener('load', function () {
+      idle(function () {
+        addLink('preconnect', 'https://cdn.jsdelivr.net');
+        addLink('preconnect', 'https://cdn.jsdelivr.net', '', true);
+        warmConnections();
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

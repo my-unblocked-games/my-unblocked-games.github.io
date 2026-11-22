@@ -1,15 +1,22 @@
 const fs = require("fs");
 const path = require("path");
+const { slugify } = require("../src/utils/slug");
 
 const rootDir = path.join(__dirname, "..");
 const dataDir = path.join(rootDir, "data");
 
 /**
- * Get all valid game names from data/*.json files
+ * Get the page slug of every game in data/*.json (same naming as the build:
+ * displayName, then name, then folder).
  */
 function getValidGameNames() {
   const jsonFiles = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
-  return jsonFiles.map(f => path.basename(f, '.json'));
+  return jsonFiles.map(f => {
+    const folder = path.basename(f, '.json');
+    let json = {};
+    try { json = JSON.parse(fs.readFileSync(path.join(dataDir, f), 'utf8')); } catch (e) { /* fall back to folder */ }
+    return slugify(json.displayName || json.name || folder);
+  });
 }
 
 /**
@@ -22,7 +29,8 @@ function getGameHTMLFiles() {
   const specialFiles = [
     'index.html',
     'index.template.html',
-    'dmca.html'
+    'dmca.html',
+    '404.html'
   ];
 
   return files.filter(f => {
@@ -49,7 +57,7 @@ function cleanupOrphanedPages() {
     if (!validGameNames.includes(gameName)) {
       const filePath = path.join(rootDir, htmlFile);
       fs.unlinkSync(filePath);
-      console.log(`🗑️  Deleted ${htmlFile} (no corresponding data/${gameName}.json)`);
+      console.log(`🗑️  Deleted ${htmlFile} (no game in data/ has the slug "${gameName}")`);
       deleted++;
     } else {
       kept++;

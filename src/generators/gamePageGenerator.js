@@ -1,10 +1,17 @@
-const { getThumbPath, FALLBACK_THUMBNAIL } = require("../utils/assetManager");
+const fs = require("fs");
+const path = require("path");
+const { getThumbPath,FALLBACK_THUMBNAIL } = require("../utils/assetManager");
 const { generateGameMetaTags, generateGameStructuredData, generateGameSEOTitle, generateGameSEODescription } = require("../utils/seoBuilder");
 const { escapeHtml, escapeHtmlAttr } = require("../utils/htmlEscape");
 const { generateGoogleTag } = require("../utils/analytics");
 const { RECOMMENDED_GAMES_COUNT, MAX_RELATED_GAMES, GAME_FRAME_SANDBOX, SITE_HOST } = require("../utils/constants");
 
-const categoryHref = (cat) => `/#/category/${encodeURIComponent(cat)}`;
+// Loading spinner markup and warm-up/retry script (kept in templates/ so the
+// regexes inside are not mangled by template-literal escaping).
+const GAME_LOADING_HTML = fs.readFileSync(path.join(__dirname, "../../templates/game-loading.html"), "utf8").replace(/\s+$/, "");
+const GAME_LOADING_JS = fs.readFileSync(path.join(__dirname, "../../templates/game-loading.js"), "utf8");
+
+const categoryHref =(cat) => `/#/category/${encodeURIComponent(cat)}`;
 
 /**
  * Info panel beside the game. Every value comes from the game's data or files:
@@ -146,7 +153,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
     const escapedNameText = escapeHtml(g.name);
     // SEO-optimized alt text with keywords
     const altText = `Play ${escapedNameText} Unblocked - Free Online Game`;
-    recommendedGamesHTML += `<a href="/${escapeHtmlAttr(encodeURIComponent(g.folder))}.html" class="game-card" title="Play ${escapedNameText} Unblocked Free Online" onclick="trackRecentGame('${escapedFolder}')">
+    recommendedGamesHTML += `<a href="/${escapeHtmlAttr(g.slug)}.html" class="game-card" title="Play ${escapedNameText} Unblocked Free Online" onclick="trackRecentGame('${escapedFolder}')">
       <div class="thumb-container" style="--thumb-url: url('${escapedThumbPath}')">
         <img class="thumb" src="${escapedThumbPath}" alt="${altText}" loading="lazy" width="300" height="300">
       </div>
@@ -213,7 +220,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
             sandbox="${GAME_FRAME_SANDBOX}"
             allowfullscreen
             tabindex="0">
-          </iframe>
+          </iframe>${GAME_LOADING_HTML}
         </div>
 
         <!-- Keep fullscreen outside the game so it does not cover touch targets. -->
@@ -323,6 +330,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
       const frame = document.getElementById('gameFrame');
 
       frame.src = '${gameUrl}';
+      if (window.beginGameLoading) window.beginGameLoading();
       frame.classList.add('active');
       overlay.classList.add('hidden');
 
@@ -623,7 +631,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
   <!-- Cookie Consent Banner -->
   <link rel="stylesheet" href="assets/cookie-consent.css">
   <script src="assets/cookie-consent.js"></script>
-
+${GAME_LOADING_JS.replace("__GAME_URL__", () => `'${gameUrl}'`)}
 </body>
 </html>`;
 }
