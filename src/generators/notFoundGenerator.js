@@ -22,7 +22,7 @@ function generateNotFoundPage(games) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
-  <title>Page not found | Chromebook Unlocked Games</title>
+  <title>Page not found Unlocked Games</title>
   <link rel="icon" href="/favicon.ico">
   <script>
     (function () {

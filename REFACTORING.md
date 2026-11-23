@@ -22,7 +22,7 @@ The `generate.js` script has been refactored from a **2,824-line monolithic file
 ## New Project Structure
 
 ```
-chromebook-unlocked.github.io/
+Unblocked Games/
 ├── generate.js              # Main build orchestrator (89 lines)
 ├── generate.js.backup       # Original file backup
 │

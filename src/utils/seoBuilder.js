@@ -8,7 +8,7 @@ const { SITE_URL: BASE_URL } = require('./constants');
 
 // Percent-encode each path segment so folder names with spaces form valid URLs.
 const encodePath = (p) => p.split('/').map(encodeURIComponent).join('/');
-const SITE_NAME = 'Chromebook Unlocked Games';
+const SITE_NAME = 'Unblocked Games';
 const LOGO_URL = `${BASE_URL}/assets/logo.webp`;
 const OG_IMAGE_URL = `${BASE_URL}/assets/og-image.png`;
 
@@ -22,7 +22,7 @@ const FAVICON_LINKS = `<link rel="icon" type="image/png" sizes="32x32" href="/as
  * @returns {string} HTML string with meta tags
  */
 function generateIndexMetaTags() {
-  const title = 'Chromebook Unlocked Games | Unblocked Games for School Chromebooks';
+  const title = 'Unblocked Games | Unblocked Games for School Chromebooks';
   const description = 'Browse free unblocked games for Chromebook with direct links to every game. Play browser games online, including puzzle, racing, sports and arcade titles.';
 
   return `<meta charset="UTF-8">
@@ -45,7 +45,7 @@ function generateIndexMetaTags() {
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:image" content="${OG_IMAGE_URL}">
-  <meta property="og:image:alt" content="Chromebook Unlocked Games - Play Unblocked Games Online Free at School">
+  <meta property="og:image:alt" content="Unblocked Games - Play Unblocked Games Online Free at School">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="${SITE_NAME}">
@@ -57,7 +57,7 @@ function generateIndexMetaTags() {
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
   <meta name="twitter:image" content="${OG_IMAGE_URL}">
-  <meta name="twitter:image:alt" content="Chromebook Unlocked Games - Play Unblocked Games Online Free at School">
+  <meta name="twitter:image:alt" content="Unblocked Games - Play Unblocked Games Online Free at School">
 
   <!-- Favicon -->
   ${FAVICON_LINKS}
@@ -116,7 +116,7 @@ function generateIndexStructuredData(games = []) {
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Chromebook Unlocked Games - Free Unblocked Games",
+    "name": "Unblocked Games - Free Unblocked Games",
     "description": "Collection of free online games for Chromebook and other browsers.",
     "numberOfItems": games.length || 100,
     "itemListElement": games.slice(0, 20).map((game, index) => ({
@@ -161,10 +161,10 @@ function generateGameMetaTags(game, thumbPath) {
   const categoryText = categories.length > 0 ? categories.join(', ') : 'Action';
 
   // SEO-optimized title variations - (game name) Unblocked - Play Online Free
-  const gameTitle = `${gameName} Unblocked - Play Online Free | Chromebook Unlocked Games`;
+  const gameTitle = `${gameName} Unblocked - Play Online Free | Unblocked Games`;
 
   // Describe the game page in plain language.
-  const gameDescription = `Play ${gameName} online in your browser. Explore this ${categoryText.toLowerCase()} game on Chromebook or desktop, then browse more free games on Chromebook Unlocked Games.`;
+  const gameDescription = `Play ${gameName} online in your browser. Explore this ${categoryText.toLowerCase()} game on Chromebook or desktop, then browse more free games on Unblocked Games.`;
 
   const gameUrl = `${BASE_URL}/${game.slug}.html`;
   const imageUrl = `${BASE_URL}/${encodePath(thumbPath)}`;
@@ -335,7 +335,7 @@ ${JSON.stringify(webPageSchema, null, 2)}
  * @returns {string} SEO title
  */
 function generateGameSEOTitle(game) {
-  return `${game.name} Unblocked - Play Online Free | Chromebook Unlocked Games`;
+  return `${game.name} Unblocked - Play Online Free | Unblocked Games`;
 }
 
 /**

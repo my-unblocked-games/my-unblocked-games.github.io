@@ -36,7 +36,7 @@ async function main() {
     <text x="600" y="255" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
           font-size="30" letter-spacing="8" fill="rgba(255,255,255,0.5)">🎮 FREE ONLINE GAMES</text>
     <text x="600" y="345" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
-          font-size="68" font-weight="bold" fill="url(#txt)">Chromebook Unlocked Games</text>
+          font-size="68" font-weight="bold" fill="url(#txt)">Unblocked Games</text>
     <text x="600" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
           font-size="34" fill="rgba(255,255,255,0.85)">Play 180+ Free Unblocked Games Online</text>
     <rect x="450" y="470" width="300" height="4" rx="2" fill="#ff66ff" opacity="0.6"/>

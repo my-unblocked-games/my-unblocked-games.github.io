@@ -192,8 +192,8 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
   <!-- Header with Logo -->
   <header>
     <div class="header-left">
-      <img src="assets/logo.webp" alt="Chromebook Unlocked Games - Free Unblocked Games for School" class="header-logo" onclick="window.location.href='/'" width="40" height="40" loading="eager" fetchpriority="high">
-      <a class="site-title" href="/">Chromebook Unlocked Games</a>
+      <img src="assets/logo.webp" alt="Unblocked Games - Free Unblocked Games for School" class="header-logo" onclick="window.location.href='/'" width="40" height="40" loading="eager" fetchpriority="high">
+      <a class="site-title" href="/">Unblocked Games</a>
     </div>
   </header>
 
@@ -288,7 +288,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>Chromebook Unlocked Games</h3>
+        <h3>Unblocked Games</h3>
         <span class="footer-url">${SITE_HOST}</span>
       </div>
       <div class="footer-links">
@@ -301,7 +301,7 @@ function generateGamePage(game, allGames, categories, gamePageStyles, gamesDir) 
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; ${new Date().getFullYear()} Chromebook Unlocked Games. All rights reserved.</p>
+      <p>&copy; ${new Date().getFullYear()} Unblocked Games. All rights reserved.</p>
     </div>
   </footer>
 

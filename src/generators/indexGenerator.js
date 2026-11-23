@@ -211,8 +211,8 @@ function generateIndexHTML(games, categories, mainStyles, clientJS, gamesDir = '
     <!-- Top Header with Search -->
     <header id="topHeader">
       <div class="header-left">
-        <img src="assets/logo.webp" alt="Chromebook Unlocked Games Logo" class="header-logo" onclick="window.location.href='/'" width="48" height="48" fetchpriority="high">
-        <h1 onclick="window.location.href='/'">Chromebook Unlocked Games</h1>
+        <img src="assets/logo.webp" alt="Unblocked Games Logo" class="header-logo" onclick="window.location.href='/'" width="48" height="48" fetchpriority="high">
+        <h1 onclick="window.location.href='/'">Unblocked Games</h1>
       </div>
       <div id="searchContainer" role="search">
         <span id="searchIcon" aria-hidden="true">🔍</span>
@@ -259,14 +259,14 @@ function generateIndexHTML(games, categories, mainStyles, clientJS, gamesDir = '
 
       <section class="site-guide" aria-labelledby="site-guide-title">
         <h2 id="site-guide-title">Free browser games for Chromebook</h2>
-        <p>Browse puzzle, racing, sports and arcade games in the grid above. Each game card opens its own page on Chromebook Unlocked Games, with a direct GitHub.io link you can share.</p>
+        <p>Browse puzzle, racing, sports and arcade games in the grid above. Each game card opens its own page on Unblocked Games, with a direct GitHub.io link you can share.</p>
         <p>Looking for games to play on a school Chromebook? Use the search box to find a title, or open the alphabetical directory above to browse all available games. Games launch in your browser without an app download.</p>
       </section>
 
       <footer id="siteFooter">
         <div class="footer-content">
           <div class="footer-brand">
-            <h3>Chromebook Unlocked Games</h3>
+            <h3>Unblocked Games</h3>
             <span class="footer-url">${SITE_HOST}</span>
           </div>
           <div class="footer-links">
@@ -278,7 +278,7 @@ function generateIndexHTML(games, categories, mainStyles, clientJS, gamesDir = '
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; ${new Date().getFullYear()} Chromebook Unlocked Games. All rights reserved.</p>
+          <p>&copy; ${new Date().getFullYear()} Unblocked Games. All rights reserved.</p>
         </div>
       </footer>
     </div>

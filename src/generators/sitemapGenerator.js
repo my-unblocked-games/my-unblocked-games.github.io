@@ -33,7 +33,7 @@ function generateSitemap(games, outputDir, gamesDir = './games') {
     <priority>1.0</priority>
     <image:image>
       <image:loc>${baseUrl}/assets/logo.png</image:loc>
-      <image:title>Chromebook Unlocked Games - Free Unblocked Games for School</image:title>
+      <image:title>Unblocked Games - Free Unblocked Games for School</image:title>
       <image:caption>Play 100+ free unblocked games online at school on your Chromebook</image:caption>
     </image:image>
   </url>
@@ -93,7 +93,7 @@ function generateSitemap(games, outputDir, gamesDir = './games') {
  * @param {string} baseUrl - Base URL of the site
  */
 function generateRobotsTxt(outputDir, baseUrl) {
-  const robotsTxt = `# Robots.txt for Chromebook Unlocked Games
+  const robotsTxt = `# Robots.txt for Unblocked Games
 # Free Unblocked Games for School
 
 User-agent: *

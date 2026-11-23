@@ -5,8 +5,8 @@
 
 // Canonical site address — every absolute URL (canonical, sitemap, robots,
 // structured data, footer) is built from this, so the domain lives in one place.
-const SITE_URL = "https://chromebook-unlocked.github.io";
-const SITE_HOST = "chromebook-unlocked.github.io";
+const SITE_URL = "https://Unblocked Games";
+const SITE_HOST = "Unblocked Games";
 
 // Google Analytics 4 measurement ID (see src/utils/analytics.js).
 const GA_MEASUREMENT_ID = "G-D02VL7XL64";

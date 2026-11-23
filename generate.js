@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Main build script for Chromebook Unlocked Games
+ * Main build script for Unblocked Games
  *
  * This script orchestrates the generation of the static site by:
  * 1. Loading and validating game data
